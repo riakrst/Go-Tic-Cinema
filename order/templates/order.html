@@ -1,0 +1,18 @@
+
+<div class="jam_tayang">
+    <label for="jam_tayang">Jam Tayang</label>
+    <div class="btn-group" role="group" aria-label="Pilihan">
+        <button type="button" class="btn btn-primary">13.00</button>
+        <button type="button" class="btn btn-primary">16.00</button>
+        <button type="button" class="btn btn-primary">19.00</button>
+    </div>
+</div>
+
+  
+<form method="post" action="">
+    {% csrf_token %}
+    <label for="jumlah">Jumlah</label>
+    <input type="number" id="jumlah" name="jumlah">
+    <br>
+    <input type="submit" value="Order">
+</form>

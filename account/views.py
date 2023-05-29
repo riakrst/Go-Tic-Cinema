@@ -15,7 +15,7 @@ def csrf_failure_view(request, reason=""):
 @login_required
 def dashboard(request):
     return render(request,
-                  'account/dashboard.html',
+                  '../film/home.html',
                   {'section': 'dashboard'})
 
 
