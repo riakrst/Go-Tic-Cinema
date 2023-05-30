@@ -3,16 +3,21 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+"""class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedManager,
+                    self).get_queryset()\
+                    .filter(status='published')"""
+
 class Genre(models.Model):
     genre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.genre
 
-
 class Film(models.Model):
     judul = models.CharField(max_length=200,)
-    cover = models.ImageField(upload_to="film_covers/", blank=True,
+    cover = models.ImageField(upload_to="media/cover/", blank=True,
                               default="no-image.png")
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE,)
     durasi = models.CharField(max_length=50,)

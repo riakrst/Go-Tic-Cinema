@@ -1,2 +1,6 @@
+superuser
+username: superadmin
+pass: super1234
+
 username: riakrst
 pass: ria1234

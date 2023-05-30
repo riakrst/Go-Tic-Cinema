@@ -3,15 +3,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Film
 
 
-def film(request):
-    object_list = Film.published.all()
-    paginator = Paginator(object_list, 6)
+def post_film(request):
+    film_list = Film.objects.all()
+    paginator = Paginator(film_list, 6)
     page = request.GET.get('page')
     try:
-        films = paginator.page(page)
+        posts = paginator.page(page)
     except PageNotAnInteger:
-        films = paginator.page(1)
+        posts = paginator.page(1)
     except EmptyPage:
         post = paginator.page(paginator.num_pages)
 
-    return render(request, 'home.html', {'page': page, 'films': films})
+    return render(request, 'home.html', {'page': page, 'posts': posts})
