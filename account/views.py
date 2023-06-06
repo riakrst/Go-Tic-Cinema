@@ -2,16 +2,53 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-# from django.views.decorators.csrf import csrf_protect
 from .forms import LoginForm, RegistrationForm
 
 
-"""@csrf_protect
-def csrf_failure_view(request, reason=""):
-    return render(request, 'account/registration/csrf_failure.html')"""
+@login_required
+def home(request):
+    return render(request, 'film/home.html')
 
 
+def user_register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('login')
+    else:
+        form = RegistrationForm()
+    return render(request, 'account/registration.html', {'form': form})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+    else:
+        form = LoginForm()
+    return render(request, 'account/login.html', {'form': form})
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+
+"""
 @login_required
 def dashboard(request):
     return render(request,
@@ -66,4 +103,4 @@ def registration(request):
     else:
         form = RegistrationForm()
 
-    return render(request, 'account/registration/registration.html', {'form': form})
+    return render(request, 'account/registration/registration.html', {'form': form})"""

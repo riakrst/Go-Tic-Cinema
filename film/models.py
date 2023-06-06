@@ -3,12 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-"""class PublishedManager(models.Manager):
-    def get_queryset(self):
-        return super(PublishedManager,
-                    self).get_queryset()\
-                    .filter(status='published')"""
-
 class Genre(models.Model):
     genre = models.CharField(max_length=50)
 
@@ -35,7 +29,12 @@ class Jadwal(models.Model):
     jam = models.TimeField("jam tayang")
     film = models.ForeignKey(Film, on_delete=models.CASCADE,)
 
-
 class Tiket(models.Model):
-    film = models.ForeignKey(Film, on_delete=models.CASCADE,)
+    jadwal = models.ForeignKey(Jadwal, on_delete=models.CASCADE,)
     jumlah = models.IntegerField()
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,)
+    tiket = models.ForeignKey(Tiket, on_delete=models.CASCADE,)
+    tanggal = models.DateField(auto_now_add=True)
+    jumlah = models.IntegerField("jumlah tiket")

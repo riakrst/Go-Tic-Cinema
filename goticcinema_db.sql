@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2023 at 06:33 AM
+-- Generation Time: Jun 06, 2023 at 11:42 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -94,14 +94,14 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (30, 'Can change genre', 8, 'change_genre'),
 (31, 'Can delete genre', 8, 'delete_genre'),
 (32, 'Can view genre', 8, 'view_genre'),
-(33, 'Can add tiket', 9, 'add_tiket'),
-(34, 'Can change tiket', 9, 'change_tiket'),
-(35, 'Can delete tiket', 9, 'delete_tiket'),
-(36, 'Can view tiket', 9, 'view_tiket'),
-(37, 'Can add jadwal', 10, 'add_jadwal'),
-(38, 'Can change jadwal', 10, 'change_jadwal'),
-(39, 'Can delete jadwal', 10, 'delete_jadwal'),
-(40, 'Can view jadwal', 10, 'view_jadwal'),
+(33, 'Can add jadwal', 9, 'add_jadwal'),
+(34, 'Can change jadwal', 9, 'change_jadwal'),
+(35, 'Can delete jadwal', 9, 'delete_jadwal'),
+(36, 'Can view jadwal', 9, 'view_jadwal'),
+(37, 'Can add tiket', 10, 'add_tiket'),
+(38, 'Can change tiket', 10, 'change_tiket'),
+(39, 'Can delete tiket', 10, 'delete_tiket'),
+(40, 'Can view tiket', 10, 'view_tiket'),
 (41, 'Can add order', 11, 'add_order'),
 (42, 'Can change order', 11, 'change_order'),
 (43, 'Can delete order', 11, 'delete_order'),
@@ -132,9 +132,8 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$390000$FTw4iRiu1IWfhYIpyy8CAo$iQrbDwZrVb8n4Ur7OyLFsJNWQa/+BXvjzZCbYsaHNUg=', '2023-05-31 04:30:03.607734', 0, 'riakrst', '', '', 'riakristiria@gmail.com', 0, 1, '2023-05-27 12:58:54.645561'),
-(2, 'pbkdf2_sha256$390000$PGRZQJvKj10bZiet2rD4UB$qW473V04qWoxsuZ3rQjbTHF7THjduZ+F/xgiFcwwdtk=', '2023-05-29 06:38:38.267170', 1, 'superadmin', '', '', 'superadmin@admin.com', 1, 1, '2023-05-29 06:37:20.472919'),
-(3, 'pbkdf2_sha256$390000$qrKu8HpQUuPs5DGsnBUzhI$4ZuCnh1ubB3smoWWlqUuPG3vjr/6Q+D2ok/e0B6dSUA=', '2023-05-30 08:39:28.515282', 0, 'astriwahyuningsiam', '', '', 'astriwahyu@gmail.com', 0, 1, '2023-05-30 08:33:40.008295');
+(1, 'pbkdf2_sha256$390000$ZbD9Xcgef7sipRQk49mgA6$atlnTVT2rZS+y6z5nPQqLDcqGrfBZgPudhr+QU9PDcc=', '2023-06-06 07:09:31.076225', 1, 'superadmin', '', '', 'superadmin@admin.com', 1, 1, '2023-06-06 07:09:17.365210'),
+(2, 'pbkdf2_sha256$390000$5m0TSoQLn3W6a5djJjldSg$1Ka4eSf7VfSPfVMdV2JdYW92oxv4QBIvNl6eqEfoCAA=', '2023-06-06 08:06:50.915090', 0, 'riakristi', 'Ria', 'Kristi', 'riakristibasri@gmail.com', 0, 1, '2023-06-06 08:06:32.630031');
 
 -- --------------------------------------------------------
 
@@ -182,18 +181,13 @@ CREATE TABLE `django_admin_log` (
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2023-05-29 06:58:36.662720', '1', 'Dokumenter', 1, '[{\"added\": {}}]', 8, 2),
-(2, '2023-05-29 06:58:52.060717', '2', 'Fiksi', 1, '[{\"added\": {}}]', 8, 2),
-(3, '2023-05-29 06:59:33.838142', '3', 'Arsip', 1, '[{\"added\": {}}]', 8, 2),
-(4, '2023-05-29 07:10:05.997338', '1', 'Amarta Gadis Dan Air', 1, '[{\"added\": {}}]', 7, 2),
-(5, '2023-05-29 07:11:32.561465', '2', 'Bali', 1, '[{\"added\": {}}]', 7, 2),
-(6, '2023-05-29 07:13:52.756092', '3', 'Di Kaliurang', 1, '[{\"added\": {}}]', 7, 2),
-(7, '2023-05-29 07:15:22.894373', '4', 'Ibu Untuk Bumi', 1, '[{\"added\": {}}]', 7, 2),
-(8, '2023-05-29 07:16:38.733644', '5', 'Kembalilah Dengan Tenang', 1, '[{\"added\": {}}]', 7, 2),
-(9, '2023-05-29 07:20:32.879294', '6', 'Marganing Gesang', 1, '[{\"added\": {}}]', 7, 2),
-(10, '2023-05-29 07:21:15.224603', '7', 'Portal Pandemi', 1, '[{\"added\": {}}]', 7, 2),
-(11, '2023-05-29 07:22:15.935538', '8', 'Sanaboedaja 1935', 1, '[{\"added\": {}}]', 7, 2),
-(12, '2023-05-29 07:24:30.594350', '1', 'Jadwal object (1)', 1, '[{\"added\": {}}]', 10, 2);
+(1, '2023-06-06 08:16:55.277069', '1', 'Fiksi', 1, '[{\"added\": {}}]', 8, 1),
+(2, '2023-06-06 08:17:17.470360', '2', 'Dokumenter', 1, '[{\"added\": {}}]', 8, 1),
+(3, '2023-06-06 08:17:23.952373', '3', 'Arsip', 1, '[{\"added\": {}}]', 8, 1),
+(4, '2023-06-06 08:19:57.706824', '1', 'Amarta Gadis Dan Air', 1, '[{\"added\": {}}]', 7, 1),
+(5, '2023-06-06 08:35:11.189482', '1', 'Jadwal object (1)', 1, '[{\"added\": {}}]', 9, 1),
+(6, '2023-06-06 08:37:17.940447', '2', 'Bali', 1, '[{\"added\": {}}]', 7, 1),
+(7, '2023-06-06 08:38:03.911006', '2', 'Jadwal object (2)', 1, '[{\"added\": {}}]', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -219,9 +213,9 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (5, 'contenttypes', 'contenttype'),
 (7, 'film', 'film'),
 (8, 'film', 'genre'),
-(10, 'film', 'jadwal'),
-(9, 'film', 'tiket'),
-(11, 'order', 'order'),
+(9, 'film', 'jadwal'),
+(11, 'film', 'order'),
+(10, 'film', 'tiket'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -242,30 +236,25 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2023-05-27 12:42:41.681446'),
-(2, 'auth', '0001_initial', '2023-05-27 12:42:42.773786'),
-(3, 'admin', '0001_initial', '2023-05-27 12:42:43.053789'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2023-05-27 12:42:43.093792'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2023-05-27 12:42:43.156792'),
-(6, 'contenttypes', '0002_remove_content_type_name', '2023-05-27 12:42:43.390800'),
-(7, 'auth', '0002_alter_permission_name_max_length', '2023-05-27 12:42:43.550787'),
-(8, 'auth', '0003_alter_user_email_max_length', '2023-05-27 12:42:43.651801'),
-(9, 'auth', '0004_alter_user_username_opts', '2023-05-27 12:42:43.682791'),
-(10, 'auth', '0005_alter_user_last_login_null', '2023-05-27 12:42:43.816798'),
-(11, 'auth', '0006_require_contenttypes_0002', '2023-05-27 12:42:43.824790'),
-(12, 'auth', '0007_alter_validators_add_error_messages', '2023-05-27 12:42:43.858794'),
-(13, 'auth', '0008_alter_user_username_max_length', '2023-05-27 12:42:43.952789'),
-(14, 'auth', '0009_alter_user_last_name_max_length', '2023-05-27 12:42:44.051785'),
-(15, 'auth', '0010_alter_group_name_max_length', '2023-05-27 12:42:44.121785'),
-(16, 'auth', '0011_update_proxy_permissions', '2023-05-27 12:42:44.150790'),
-(17, 'auth', '0012_alter_user_first_name_max_length', '2023-05-27 12:42:44.225799'),
-(18, 'film', '0001_initial', '2023-05-27 12:42:44.746830'),
-(19, 'order', '0001_initial', '2023-05-27 12:42:45.018150'),
-(20, 'sessions', '0001_initial', '2023-05-27 12:42:45.140157'),
-(21, 'film', '0002_rename_stok_tiket_jumlah', '2023-05-27 12:44:10.888827'),
-(22, 'order', '0002_remove_order_cover', '2023-05-28 03:30:57.885840'),
-(23, 'order', '0003_alter_order_jumlah_alter_order_user', '2023-05-28 03:33:01.777714'),
-(24, 'order', '0004_alter_order_tanggal', '2023-05-28 03:53:57.171740');
+(1, 'contenttypes', '0001_initial', '2023-06-06 03:57:32.093973'),
+(2, 'auth', '0001_initial', '2023-06-06 03:57:33.008974'),
+(3, 'admin', '0001_initial', '2023-06-06 03:57:33.373974'),
+(4, 'admin', '0002_logentry_remove_auto_add', '2023-06-06 03:57:33.402974'),
+(5, 'admin', '0003_logentry_add_action_flag_choices', '2023-06-06 03:57:33.434973'),
+(6, 'contenttypes', '0002_remove_content_type_name', '2023-06-06 03:57:33.604966'),
+(7, 'auth', '0002_alter_permission_name_max_length', '2023-06-06 03:57:33.731972'),
+(8, 'auth', '0003_alter_user_email_max_length', '2023-06-06 03:57:33.791967'),
+(9, 'auth', '0004_alter_user_username_opts', '2023-06-06 03:57:33.818985'),
+(10, 'auth', '0005_alter_user_last_login_null', '2023-06-06 03:57:33.964968'),
+(11, 'auth', '0006_require_contenttypes_0002', '2023-06-06 03:57:33.972972'),
+(12, 'auth', '0007_alter_validators_add_error_messages', '2023-06-06 03:57:34.001976'),
+(13, 'auth', '0008_alter_user_username_max_length', '2023-06-06 03:57:34.070983'),
+(14, 'auth', '0009_alter_user_last_name_max_length', '2023-06-06 03:57:34.136967'),
+(15, 'auth', '0010_alter_group_name_max_length', '2023-06-06 03:57:34.206968'),
+(16, 'auth', '0011_update_proxy_permissions', '2023-06-06 03:57:34.243974'),
+(17, 'auth', '0012_alter_user_first_name_max_length', '2023-06-06 03:57:34.342976'),
+(18, 'film', '0001_initial', '2023-06-06 03:57:35.300973'),
+(19, 'sessions', '0001_initial', '2023-06-06 03:57:35.481974');
 
 -- --------------------------------------------------------
 
@@ -284,16 +273,8 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('1fgzkhpxpn3su3v9rtiofr3k6k7v3aox', 'e30:1q39ts:m54MsHlXT1b405ATlljxy2QT_QxBbYc8_3C-HZmEj-A', '2023-06-11 06:29:08.543779'),
-('2h9cq66xn8l4hmyu8drw3vlweaef9mk0', 'e30:1q2tpS:_EamFEN2moBeu1TY3y5mraSI7q5c3gzh-OXiFlBOgZo', '2023-06-10 13:19:30.327079'),
-('4zugr7kmu1s0738a0741cnpciw2ljs6f', 'e30:1q2tiZ:TQIJzD959EHOEU0DHX8wTZLOqS3brrcq4vl_EyQuvHs', '2023-06-10 13:12:23.786348'),
-('695vin2lf42gwzxbebc7btxmjkwx01ar', 'e30:1q4DTH:lh-L8IK_kwHJJyORSyfbknFvI-HkJv4wkfv_RxS21vo', '2023-06-14 04:30:03.560735'),
-('fba50v78qm23nqof67091oo82yfvezvq', 'e30:1q3ut6:6w6XETbW7z-BDgtLfqubTyGvSoG3Lo2mXM8WeK6qC5I', '2023-06-13 08:39:28.510717'),
-('nso07etefnnn6p85290oqmh3oqqtsuse', 'e30:1q39rN:aLyRv8aRoCMqoB2v1IgpZzo64IrBZ7K23GdQoDdMYus', '2023-06-11 06:26:33.356441'),
-('q8qpvx637cwyxswdouptfj8hti7k1c3q', 'e30:1q3viZ:VgQT-CmOlg7T91t_yetMyriEvs4ELSUtEW3eJKRsh6U', '2023-06-13 09:32:39.435407'),
-('y29k5130i9xgkgcxhp8hbg0buv2afp7o', 'e30:1q3uph:fFek1rXrJWw1pU5UEeHInT_T68vzDOEVoI8WF1n5hEo', '2023-06-13 08:35:57.218496'),
-('y2uo58cemsk3c515bsw8cvtshjt62vee', 'e30:1q4DSC:sCWqvzA6JisMzt15nYqdUnlDjBpAnn9DPhGBlFW9LEc', '2023-06-14 04:28:56.122858'),
-('z8vvvyyj78rvr4lsm8uqfojpk0scl1ls', 'e30:1q2tjj:AbmBkqdcNSMucD-79POt_GLsidplQi7WG3grcMg-R9g', '2023-06-10 13:13:35.444704');
+('bk5yscfh8097zl5vkka9v2d1xiiwtjpl', '.eJxVjEEOwiAQRe_C2hBaOlNw6d4zkKEzSNVAUtqV8e7apAvd_vfef6lA25rD1mQJM6uz6tXpd4s0PaTsgO9UblVPtazLHPWu6IM2fa0sz8vh_h1kavlbOwRIA5H3ImBGlyha5wdATIkJMLIHB-xGFOPZYucFgXtI1JlkI6r3B-OMN9M:1q6RiM:cJ3lc8Uw-97UodnunC9_HU2-s_UuXgLtrgMKd4HVZjY', '2023-06-20 08:06:50.919736'),
+('hbz5luxi7rnezgqmya54scfqc0a52y5x', '.eJxVjDsOwjAQBe_iGln-ZWNT0ucM1u7aJgFkS3FSIe6OIqWA9s3Me4uI-zbHvec1LklchRaX342Qn7keID2w3pvkVrd1IXko8qRdTi3l1-10_w5m7PNRwwijdtkPQ3HOpVC4eKaRSbuAoNAU4syk0IMdACwEUAaS8cGVYq34fAHoKje7:1q6Qot:R0SuZT_Y0joMgUEm9iQ1jPnewIJfz-rLJY2DWoXFGXQ', '2023-06-20 07:09:31.081297');
 
 -- --------------------------------------------------------
 
@@ -315,14 +296,8 @@ CREATE TABLE `film_film` (
 --
 
 INSERT INTO `film_film` (`id`, `judul`, `cover`, `durasi`, `deskripsi`, `genre_id`) VALUES
-(1, 'Amarta Gadis Dan Air', 'media/cover/AMARTA_GADIS_DAN_AIR.jpg', '24 Menit', 'Seorang gadis berusaha menyelamatkan sang Dewi Air agar bisa lepas dari krisis air yang terjadi akibat ulah manusia.', 2),
-(2, 'Bali', 'media/cover/BALI.jpg', '18 Menit', 'Arsip video dokumentasi hitam putih dan tidak bersuara, tentang lanskap budaya dan kegiatan sosial di Bali pada tahun 1937.', 3),
-(3, 'Di Kaliurang', 'media/cover/DI_KALIURANG.jpg', '24 Menit', 'Dokumenter tentang tempat-tempat bersejarah di Kaliurang yang mulai dilupakan.', 1),
-(4, 'Ibu Untuk Bumi', 'media/cover/IBU_UNTUK_BUMI.jpg', '26 Menit', 'Dokumenter pendek yang berbicara ten- tang sampah dan bagaimana cara beragam kelas ekonomi dalam menghasilkan dan menanggulanginya.', 1),
-(5, 'Kembalilah Dengan Tenang', 'media/cover/KEMBALILAH_DENGAN_TENANG.jpg', '26 Menit', 'Sulitnya mencari tanah makam, membuat Santoso dan Wati kebingungan saat hendak menguburkan anak semata wayangnya.', 2),
-(6, 'Marganing Gesang', 'media/cover/MARGANING_GESANG.jpg', '29 Menit', 'Potongan kehidupan dalang muda di zaman modern. Dalang menjadi profesi yang lambat laun mulai ditinggalkan, menjadi se- makin tertinggal dengan adanya pandemi Covid-19.', 1),
-(7, 'Portal Pandemi', 'media/cover/PORTAL_PANDEMI.jpg', '17 Menit', 'Potongan kehidupan dalang muda di zaman modern. Dalang menjadi profesi yang lambat laun mulai ditinggalkan, menjadi se- makin tertinggal dengan adanya pandemi Covid-19.', 2),
-(8, 'Sanaboedaja 1935', 'media/cover/SANABOEDAJA_1935.jpg', '18 Menit', 'Dokumenter profil Museum Sonobudoyo yang menceritakan tentang awal mula ber- dirinya museum tersebut.', 3);
+(1, 'Amarta Gadis Dan Air', 'media/cover/AMARTA_GADIS_DAN_AIR.jpg', '24 Menit', 'Seorang gadis berusaha menyelamatkan sang Dewi Air agar bisa lepas dari krisis air yang terjadi akibat ulah manusia.', 1),
+(2, 'Bali', 'media/cover/BALI.jpg', '18 Menit', 'Dokumenter profil Museum Sonobudoyo yang menceritakan tentang awal mula ber- dirinya museum tersebut.', 3);
 
 -- --------------------------------------------------------
 
@@ -340,8 +315,8 @@ CREATE TABLE `film_genre` (
 --
 
 INSERT INTO `film_genre` (`id`, `genre`) VALUES
-(1, 'Dokumenter'),
-(2, 'Fiksi'),
+(1, 'Fiksi'),
+(2, 'Dokumenter'),
 (3, 'Arsip');
 
 -- --------------------------------------------------------
@@ -362,7 +337,22 @@ CREATE TABLE `film_jadwal` (
 --
 
 INSERT INTO `film_jadwal` (`id`, `tanggal`, `jam`, `film_id`) VALUES
-(1, '2023-05-29', '16:00:00.000000', 8);
+(1, '2023-06-06', '16:00:00.000000', 1),
+(2, '2023-06-06', '16:00:00.000000', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `film_order`
+--
+
+CREATE TABLE `film_order` (
+  `id` bigint(20) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tiket_id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -373,21 +363,7 @@ INSERT INTO `film_jadwal` (`id`, `tanggal`, `jam`, `film_id`) VALUES
 CREATE TABLE `film_tiket` (
   `id` bigint(20) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `film_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_order`
---
-
-CREATE TABLE `order_order` (
-  `id` bigint(20) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `tiket_id` bigint(20) NOT NULL
+  `jadwal_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -488,19 +464,19 @@ ALTER TABLE `film_jadwal`
   ADD KEY `film_jadwal_film_id_e80ac937_fk_film_film_id` (`film_id`);
 
 --
+-- Indexes for table `film_order`
+--
+ALTER TABLE `film_order`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `film_order_tiket_id_7f030e2e_fk_film_tiket_id` (`tiket_id`),
+  ADD KEY `film_order_user_id_b1ee618d_fk_auth_user_id` (`user_id`);
+
+--
 -- Indexes for table `film_tiket`
 --
 ALTER TABLE `film_tiket`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `film_tiket_film_id_ef803e7d_fk_film_film_id` (`film_id`);
-
---
--- Indexes for table `order_order`
---
-ALTER TABLE `order_order`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `order_order_tiket_id_9105c76e_fk_film_tiket_id` (`tiket_id`),
-  ADD KEY `order_order_user_id_7cf9bc2b` (`user_id`);
+  ADD KEY `film_tiket_jadwal_id_94e622ce_fk_film_jadwal_id` (`jadwal_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -528,7 +504,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
@@ -546,7 +522,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -558,13 +534,13 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `film_film`
 --
 ALTER TABLE `film_film`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `film_genre`
@@ -576,18 +552,18 @@ ALTER TABLE `film_genre`
 -- AUTO_INCREMENT for table `film_jadwal`
 --
 ALTER TABLE `film_jadwal`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `film_order`
+--
+ALTER TABLE `film_order`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `film_tiket`
 --
 ALTER TABLE `film_tiket`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order_order`
---
-ALTER TABLE `order_order`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
@@ -641,17 +617,17 @@ ALTER TABLE `film_jadwal`
   ADD CONSTRAINT `film_jadwal_film_id_e80ac937_fk_film_film_id` FOREIGN KEY (`film_id`) REFERENCES `film_film` (`id`);
 
 --
+-- Constraints for table `film_order`
+--
+ALTER TABLE `film_order`
+  ADD CONSTRAINT `film_order_tiket_id_7f030e2e_fk_film_tiket_id` FOREIGN KEY (`tiket_id`) REFERENCES `film_tiket` (`id`),
+  ADD CONSTRAINT `film_order_user_id_b1ee618d_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
 -- Constraints for table `film_tiket`
 --
 ALTER TABLE `film_tiket`
-  ADD CONSTRAINT `film_tiket_film_id_ef803e7d_fk_film_film_id` FOREIGN KEY (`film_id`) REFERENCES `film_film` (`id`);
-
---
--- Constraints for table `order_order`
---
-ALTER TABLE `order_order`
-  ADD CONSTRAINT `order_order_tiket_id_9105c76e_fk_film_tiket_id` FOREIGN KEY (`tiket_id`) REFERENCES `film_tiket` (`id`),
-  ADD CONSTRAINT `order_order_user_id_7cf9bc2b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+  ADD CONSTRAINT `film_tiket_jadwal_id_94e622ce_fk_film_jadwal_id` FOREIGN KEY (`jadwal_id`) REFERENCES `film_jadwal` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

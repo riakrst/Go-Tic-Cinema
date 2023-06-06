@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genre, Film, Jadwal, Tiket
+from .models import Genre, Film, Jadwal, Tiket, Order
 
 
 @admin.register(Genre)
@@ -28,8 +28,17 @@ class PostJadwal(admin.ModelAdmin):
 
 @admin.register(Tiket)
 class PostTiket(admin.ModelAdmin):
-    list_display = ('film', 'jumlah',)
+    list_display = ('jadwal', 'jumlah',)
     list_filter = ('jumlah',)
-    search_fields = ('film', 'jumlah',)
-    raw_id_fields = ('film',)
-    ordering = ('film', 'jumlah')
+    search_fields = ('jadwal', 'jumlah',)
+    raw_id_fields = ('jadwal',)
+    ordering = ('jadwal', 'jumlah')
+
+
+@admin.register(Order)
+class Order(admin.ModelAdmin):
+    list_display = ('user', 'tiket',  'jumlah', 'tanggal',)
+    list_filter = ('tiket', 'tanggal',)
+    search_fields = ('user', 'tiket',)
+    raw_id_fields = ('user', 'tiket',)
+    ordering = ('tiket', 'tanggal',)
