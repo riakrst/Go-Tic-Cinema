@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+/* halaman login dan register */
+.card-ilustrasi{
+    width: 47em;
+    height: 44.5rem;
+    background-color: #bbcefd;
+}
+.avatar{
+    width: 400px; 
+    height: auto;
+    margin: auto;
+}
+
+.avatar-card{
+    justify-content: center;
+    align-self: center;
+    margin-top: 10rem;
+    margin-left: 5rem;
+}
+.avatar-card h5 p{
+    text-justify: center;
+}
+
+form label{
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
+form input{
+    width: 300px;
+    height: 40px;
+    border-radius: 8px;
+    border : 1px solid #e0e0e0;
+    padding-left: 5px;
+} 
+
+form button{
+    width: 300px;
+    height: 40px;
+    background-color: #2950A6;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    margin: 20px 0 20px 0;
+}
+
+.teks_tanya{
+    margin-left: 4rem;
+}
+form a{
+    text-decoration: none;
+    color: #2950A6;
+}
+
+/* halaman home */
+.card-film{
+    margin-left: 10rem;
+    margin-top: 5rem;
+}
+
+.deskripsi i{
+    padding-right: 10px;
+}
+
+.pesan-btn{
+    padding-right: 50px;
+}
+
+.jam-btn{
+    border: 0.5px solid #e7e7e7;
+    border-radius: 4px;
+    margin-top: 5px;
+}
