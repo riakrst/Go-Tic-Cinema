@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, OrderForm
 from .models import Film, Jadwal, Order
 
 
@@ -15,16 +15,16 @@ def home(request):
     posts = Film.objects.all()
     jadwal = Jadwal.objects.all()
     # pagination
-    paginator = Paginator(posts, 6)
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        post = paginator.page(paginator.num_pages)
+    # paginator = Paginator(posts, 6)
+    # page = request.GET.get('page')
+    # try:
+    #     posts = paginator.page(page)
+    # except PageNotAnInteger:
+    #     posts = paginator.page(1)
+    # except EmptyPage:
+    #     post = paginator.page(paginator.num_pages)
 
-    return render(request, 'film/home.html', {'user': user, 'page': page, 'posts': posts, 'jadwal': jadwal, })
+    return render(request, 'film/home.html', {'user': user, 'posts': posts, 'jadwal': jadwal, })
 
 
 def user_register(request):
@@ -65,23 +65,32 @@ def user_logout(request):
 
 @login_required()
 def detail_film(request, id):
-    film = get_object_or_404(Film, id=id)
-    return render(request, 'detail.html', {'film': film})
-# @login_required()
-# def detail_film(request):
-#     return render(request, 'film/detail.html')
+    film = get_object_or_404(Film, pk=id)
+    detail = Film.objects.all()
+    jadwal = Jadwal.objects.all()
 
-
-@login_required()
-def order_tiket(request, id):
-    tiket = Tiket.objects.get(id=id)
     if request.method == 'POST':
-        jumlah = int(request.POST.get('jumlah'))
-        order = Order(user=request.user, tiket=tiket, jumlah=jumlah,)
-        order.save()
-        return redirect('sukses')
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('history')
     else:
-        return render(request, 'film/detail.html', {'tiket': tiket})
+        form = OrderForm()
+    return render(request, 'film/detail.html', {'film': film, 'detail': detail, 'jadwal': jadwal, 'form': form})
+
+
+# @login_required()
+# def order_tiket(request, id):
+#     tiket = Tiket.objects.get(id=id)
+#     form = OrderForm(request.POST)
+#     if request.method == 'POST':
+#         jumlah = int(request.POST.get('jumlah'))
+#         order = Order(user=request.user, tiket=tiket, jumlah=jumlah,)
+#         order.save()
+#         return redirect('history')
+#     else:
+#         return render(request, 'film/detail.html', {'tiket': tiket, 'form': form})
+"""view untuk halaman history tiket"""
 
 
 @login_required()

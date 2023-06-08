@@ -96,7 +96,7 @@
                   <div class="card" style="width: 12rem;">
                       <img src="{{ film.cover.url }}" class="card-img-top" alt="cover film">
                       <div class="card-body">
-                        <a href="#"><h5 class="card-title">{{ film.judul }}</h5></a>
+                        <a href="{% url 'detail_film' id=film.id %}"><h5 class="card-title">{{ film.judul }}</h5></a>
                       </div>
                   </div>
               </div>
@@ -111,7 +111,7 @@
             {% endfor %} -->
 
               <!-- pagination -->
-              <div class="pagination">
+              <!-- <div class="pagination">
                   <span class="step-links">
                       {% if page.has_previous %}
                       <a href="?page={{page.previous_page_number}}"><i class="bi bi-caret-left"></i></a>
@@ -124,7 +124,7 @@
                       <a href="?page={{ page.next_page_number}}"><i class="bi bi-caret-right"></i></a>
                       {% endif %}
                   </span>
-              </div>
+              </div> -->
           </div>
         </div>
     </div>
