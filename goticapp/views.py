@@ -92,7 +92,7 @@ def detail_film(request, id):
 #         return render(request, 'film/detail.html', {'tiket': tiket, 'form': form})
 """view untuk halaman history tiket"""
 
-
+"""history halaman tiket"""
 @login_required()
 def history_tiket(request):
     return render(request, 'film/history.html')
