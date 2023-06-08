@@ -39,7 +39,7 @@
                 <div class="dropdown">
                   <button class="border-0 dropdown-toggle nav-link text-light fs-2 fw-semibold mx-2" style="background-color: #254997;" type="button" data-bs-toggle="dropdown" aria-expanded="false" ><i class="bi bi-person-circle"></i></button>
                   <ul class="dropdown-menu">
-                    <li><a class="nav-link text-dark mx-2" href="#"><i class="bi bi-person-circle"></i> {{Username}}</a></li>
+                    <li><a class="nav-link text-dark mx-2" href="#"><i class="bi bi-person-circle"></i>{{user.username}}</a></li>
                     <li><a class="nav-link text-danger mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Keluar </a></li>
                   </ul>
                 </div>
@@ -66,26 +66,30 @@
 
 			<!-- KOLOM Deskripsi -->
 			<div class="col-md-5 bg-white ms-4 ps-5 card">
-					<div class="deskripsi ">
-            <h3>{{ detail.judul }}</h3>
+        <div class="deskripsi">
+            <h3>{{ posts.judul }}</h3>
             <hr>
             <div class="film mt-1">
-              <p><i class="bi bi-film"></i> {{ detail.genre }}</p>
+                <p><i class="bi bi-film"></i> {{ posts.genre }}</p>
             </div>
             <div class="date mt-1">
-              <p><i class="bi bi-calendar3"></i> {{ detail.tanggal }}</p>
+                {% for j in jadwal %}
+                  <p><i class="bi bi-clock"></i> {{ j.jam }}</p>
+                  <p><i class="bi bi-calendar3"></i> {{ j.tanggal }}</p>
+                {% endfor %}
             </div>
             <div class="time mt-1">
-              <p><i class="bi bi-clock"></i>{{ detail.durasi }}</p>
-            </div>		
-				  </div>
-			</div>
+                <p><i class="bi bi-clock"></i>{{ posts.durasi }}</p>
+            </div>	
+        </div>
+    </div>
+    
 		</div>
 
     <div class="row justify-content-around">
       <div class="col-6">
         <h5 class="text">Deskripsi</h5>
-				<p>{{ detail.deskripsi }}</p>
+				<p>{{ posts.deskripsi }}</p>
       </div>
       <div class="col-5 pesan-btn">
         <!-- Button trigger modal -->
@@ -100,26 +104,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <!-- <div class="jam_tayang">
-                    <label for="jam_tayang">Jam Tayang</label>
-                    <br>
-                      <button type="button" class="btn jam-btn me-2">16.00</button>
-                      <button type="button" class="btn jam-btn me-2">19.00</button>
-                  
-                </div> -->
                 
-                
-                <form action="{% url 'order' %}" method="post">
-                    {% csrf_token %}
-                    <label for="jumlah">Jam Tayang</label>
-                    {{ form.jam_tayang }}
-                    <br>
-                    <label for="jumlah">Jumlah</label>
-                    {{ form.jumlah }}
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" value="Order" class="btn btn-primary">Pesan</button>
+                <form action="{% url 'detail_film' id=posts.id %}" method="post">
+                  {% csrf_token %}
+                  <!-- <label for="jam_tayang">Jam Tayang</label>
+                  <br>
+                  {% for jadwal in jadwal %}
+                      {% if jadwal.film == posts %}
+                          <p>{{ jadwal.jam }}</p>
+                          <input type="hidden" name="jam_tayang" value="{{ jadwal.id }}">
+                      {% endif %}
+                  {% endfor %}
+                  <br> -->
+                  <label for="jumlah">Jumlah</label>
+                  <br>
+                  <input type="number" name="jumlah" id="jumlah">
+                  <br>
+                  <button type="submit">Submit</button>
+              </form>
+              
               </div>
             </div>
           </div>

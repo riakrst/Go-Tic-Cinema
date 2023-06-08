@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import LoginForm, RegistrationForm, OrderForm
-from .models import Film, Jadwal, Order
+from .models import Film, Jadwal, Order, Tiket
 
 
 @login_required
@@ -62,21 +62,44 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
-
+'''
 @login_required()
 def detail_film(request, id):
-    film = get_object_or_404(Film, pk=id)
+    posts = get_object_or_404(Film, pk=id)
     detail = Film.objects.all()
     jadwal = Jadwal.objects.all()
+    # tiket = Tiket.objects.get(pk=id)
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
+            jam_tayang = form.cleaned_data.get('jam_tayang')
+            jumlah = form.cleaned_data.get('jumlah')
+            # ticket_order = Order(
+            #     user=request.user, ticket=ticket, jumlah=jumlah,)
             return redirect('history')
     else:
         form = OrderForm()
-    return render(request, 'film/detail.html', {'film': film, 'detail': detail, 'jadwal': jadwal, 'form': form})
+    return render(request, 'film/detail.html', {'posts': posts,  'detail': detail, 'jadwal': jadwal, 'form': form})
+'''
+@login_required()
+def detail_film(request, id):
+    posts = get_object_or_404(Film, pk=id)
+    jadwal = Jadwal.objects.filter(film=posts)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            jam_tayang = form.cleaned_data.get('jam_tayang')
+            jumlah = form.cleaned_data.get('jumlah')
+            tiket = Tiket(jadwal=jam_tayang, jumlah=jumlah)
+            tiket.save()
+            return redirect('history')
+    else:
+        form = OrderForm()
+    
+    return render(request, 'film/detail.html', {'posts': posts, 'jadwal': jadwal, 'form': form})
 
 
 # @login_required()
@@ -90,9 +113,10 @@ def detail_film(request, id):
 #         return redirect('history')
 #     else:
 #         return render(request, 'film/detail.html', {'tiket': tiket, 'form': form})
+
 """view untuk halaman history tiket"""
 
-"""history halaman tiket"""
+
 @login_required()
 def history_tiket(request):
     return render(request, 'film/history.html')
