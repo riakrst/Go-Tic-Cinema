@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
-from .models import Jadwal
+from .models import Order
 
 
 class LoginForm(AuthenticationForm):
@@ -54,11 +54,9 @@ class RegistrationForm(UserCreationForm):
             raise forms.ValidationError("Passwords do not match.")
 
 
-class OrderForm():
-    jam_tayang = forms.ModelChoiceField(label="Jam Tayang",
-                                        queryset=Jadwal.objects.values_list('jam', flat=True))
+class OrderForm(forms.ModelForm):
     jumlah = forms.IntegerField(label="Jumlah",)
 
     class Meta:
-        model = User
-        fields = ('jam_tayang', 'jumlah')
+        model = Order
+        fields = ('jumlah',)

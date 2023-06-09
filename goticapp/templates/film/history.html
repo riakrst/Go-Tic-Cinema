@@ -39,8 +39,8 @@
                 <div class="dropdown">
                   <button class="border-0 dropdown-toggle nav-link text-light fs-2 fw-semibold mx-2" style="background-color: #254997;" type="button" data-bs-toggle="dropdown" aria-expanded="false" ><i class="bi bi-person-circle"></i></button>
                   <ul class="dropdown-menu">
-                    <li><a class="nav-link text-dark mx-2" href="#"><i class="bi bi-person-circle"></i> {{user.username}}</a></li>
-                    <li><a class="nav-link text-danger mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Keluar </a></li>
+                    <li><a class="nav-link text-dark mx-2" href="#"><i class="bi bi-person-circle me-2"></i> {{user.username}}</a></li>
+                    <li><a class="nav-link text-danger mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right me-1"></i> Keluar </a></li>
                   </ul>
                 </div>
               </div>
@@ -55,7 +55,7 @@
   </div>    
     
     <!-- Content -->
-    <div class="container-md mt-5">
+    <div class="container-md mt-5" style="height: 31rem;">
       <!-- <div class="card"> -->
         <div class="row justify-content-start">
           <div class="col-3">
@@ -69,15 +69,15 @@
             <a type="button" class="btn btn-primary"href="#"><i class="bi bi-trash me-1"></i>Hapus</a> 
           </div>
         </div>
+        <hr>
       <!-- </div> -->
     </div>
         
-   
     <br><br>
-    
-    <footer>
+    <footer class="footer bg-secondary mt-auto  text-bg-dark">
+      <hr>
     <div class="container">
-          <div style="margin-top: 10px;">
+          <div class="my-4 pb-4">
             <div class="row">
               <div class="col-2">
                 <img src="{% static 'media/logo.png' %}" alt="GoTic Cinema" left="80" height="80">
@@ -94,7 +94,7 @@
                       <td>Contact Us</td>
                       <td>Cinema</td>
                       <td>Help Center</td>
-                      <td><img src="static/instagram.png" alt="GoTic Cinema" left="20" height="20"><img src="static/twitter.png" alt="GoTic Cinema" left="20" height="20"><img src="static/facebook.png" alt="GoTic Cinema" left="20" height="20"></td>
+                      <td><i class="bi bi-instagram me-2"></i> <i class="bi bi-twitter me-2"></i> <i class="bi bi-facebook me-2"></i></td>
                   </tr>
                   <tr style="text-align: justify;">
                       <td>About</td>

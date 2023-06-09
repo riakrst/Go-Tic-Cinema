@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark pb-0 mx-0" style="background-color: #254997;">
         <div class="container-md">
           <a class="navbar-brand fs-3 fw-semibold" href="#"> 
-            <img src="/media/logo.png" alt="GoTic Cinema" width="30" height="24">
+            <img src="{% static 'media/logo.png' %}" alt="GoTic Cinema" width="80" height="80">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,8 +39,8 @@
                 <div class="dropdown">
                   <button class="border-0 dropdown-toggle nav-link text-light fs-2 fw-semibold mx-2" style="background-color: #254997;" type="button" data-bs-toggle="dropdown" aria-expanded="false" ><i class="bi bi-person-circle"></i></button>
                   <ul class="dropdown-menu">
-                    <li><a class="nav-link text-dark mx-2" href="#"><i class="bi bi-person-circle"></i>{{user.username}}</a></li>
-                    <li><a class="nav-link text-danger mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Keluar </a></li>
+                    <li><a class="nav-link text-dark mx-2" href="#"><i class="bi bi-person-circle me-2"></i>{{user.username}}</a></li>
+                    <li><a class="nav-link text-danger mx-2" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right me-1"></i> Keluar </a></li>
                   </ul>
                 </div>
               </div>
@@ -54,7 +54,7 @@
     <!-- Akhir Navbar -->
   </div>    
     
-    <div class="container">
+    <div class="container" style="height: 40rem;">
 		<!-- Content -->
 		<div class="row justify-content-around my-5 pt-5">
 			<!-- KOLOM Cover -->
@@ -67,20 +67,20 @@
 			<!-- KOLOM Deskripsi -->
 			<div class="col-md-5 bg-white ms-4 ps-5 card">
         <div class="deskripsi">
-            <h3>{{ posts.judul }}</h3>
+            <h3 class="mt-3">{{ posts.judul }}</h3>
             <hr>
             <div class="film mt-1">
                 <p><i class="bi bi-film"></i> {{ posts.genre }}</p>
             </div>
+            <div class="time mt-1">
+              <p><i class="bi bi-clock-history"></i>{{ posts.durasi }}</p>
+            </div>	
             <div class="date mt-1">
                 {% for j in jadwal %}
                   <p><i class="bi bi-clock"></i> {{ j.jam }}</p>
                   <p><i class="bi bi-calendar3"></i> {{ j.tanggal }}</p>
                 {% endfor %}
             </div>
-            <div class="time mt-1">
-                <p><i class="bi bi-clock"></i>{{ posts.durasi }}</p>
-            </div>	
         </div>
     </div>
     
@@ -93,45 +93,96 @@
       </div>
       <div class="col-5 pesan-btn">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"style="width: 100%;">Pesan Tiket</button>
+        <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 100%;" href="{% url 'pesan_tiket' id=film.id %}">Pesan Tiket</a>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Tiket</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Jumlah Tiket</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                
-                <form action="{% url 'detail_film' id=posts.id %}" method="post">
+              
+              <form method="post" action="">
+                <div class="modal-body"></div>
                   {% csrf_token %}
-                  <!-- <label for="jam_tayang">Jam Tayang</label>
-                  <br>
-                  {% for jadwal in jadwal %}
-                      {% if jadwal.film == posts %}
-                          <p>{{ jadwal.jam }}</p>
-                          <input type="hidden" name="jam_tayang" value="{{ jadwal.id }}">
-                      {% endif %}
-                  {% endfor %}
-                  <br> -->
-                  <label for="jumlah">Jumlah</label>
-                  <br>
-                  <input type="number" name="jumlah" id="jumlah">
-                  <br>
-                  <button type="submit">Submit</button>
+                  <div class="mb-3 ms-4">
+                    <input type="number" name="jumlah" id="jumlah">
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                    <button type="submit" class="">Submit</button>
+                  </div>
+                </div>
               </form>
               
-              </div>
             </div>
           </div>
         </div>
         <!-- akhir modal -->
+
       </div>	
     </div>
 	</div>
 
+  <!-- footer -->
+  <footer class="footer bg-secondary mt-auto text-bg-dark">
+    <hr>
+  <div class="container">
+        <div class="my-4 pb-4">
+          <div class="row">
+            <div class="col-2">
+              <img src="{% static 'media/logo.png' %}" alt="GoTic Cinema" left="80" height="80">
+            </div>
+            <div class="col">
+              <table style="width: 100%; text-align: center;">
+                <tr style="text-align: justify;">
+                    <th>Company</th>
+                    <th>About</th>
+                    <th>Support</th>
+                    <th>Follow Social Media</th>
+                </tr>
+                <tr style="text-align: justify;">
+                    <td>Contact Us</td>
+                    <td>Cinema</td>
+                    <td>Help Center</td>
+                    <td><i class="bi bi-instagram me-2"></i> <i class="bi bi-twitter me-2"></i> <i class="bi bi-facebook me-2"></i></td>
+                </tr>
+                <tr style="text-align: justify;">
+                    <td>About</td>
+                    <td>My ticket</td>
+                    <td>Privacy Policy</td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: justify;">
+                    <td>Partner</td>
+                    <td>Payment</td>
+                    <td>FAQ</td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: justify;">
+                    <td></td>
+                    <td>Instalment</td>
+                    <td>Terms and Condition</td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: justify;">
+                    <td></td>
+                    <td></td>
+                    <td>Update Covid-19</td>
+                    <td></td>
+                </tr>
+
+            </table>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+
+
+  
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
 </html>
