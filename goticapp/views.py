@@ -77,64 +77,26 @@ def pesan_tiket(request, id):
         form = OrderForm(request.POST)
         if form.is_valid():
             jumlah = form.cleaned_data['jumlah']
-            schedule = get_object_or_404(Jadwal, pk=id)
-            tiket = Tiket.objects.filter(jadwal=schedule).first()
+            jadwal = get_object_or_404(Jadwal, pk=id)
+            tiket = Tiket.objects.filter(jadwal=jadwal).first()
             order = Order.objects.create(
                 user=request.user, tiket=tiket, jumlah=jumlah)
-            return redirect('history')
+            return redirect('list_order')
     else:
         form = OrderForm()
-    return redirect('detail_film')
+    return redirect('detail_film', id=id)
 
-
-'''def pesan_tiket(request, id):
-    film = get_object_or_404(Film, pk=id)
-
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            jumlah = form.cleaned_data['jumlah']
-            jadwal = request.POST['id']
-            tiket = Tiket.objects.filter(jadwal=jadwal)
-            order = Order.objects.create(
-                user=request.user, tiket=tiket, jumlah=jumlah)
-            order.save()
-            return redirect('history')
-    else:
-        form = OrderForm()
-
-    return render(request, 'film/detail.html', {'film': film, 'form': form})
-'''
-
-"""@login_required()
-def detail_film(request, id):
-    posts = get_object_or_404(Film, pk=id)
-    jadwal = Jadwal.objects.filter(film=posts, pk=jadwal_id)
-    film = jadwal.film
-
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            jumlah_tiket = form.cleaned_data['jumlah']
-            tiket = Tiket.objects.create(jadwal=jadwal, jumlah=jumlah_tiket)
-            order = Order.objects.create(user=request.user, tiket=tiket, jumlah=jumlah_tiket)
-            return redirect('history', order_id=order.id)
-    else:
-        form = OrderForm()
-    
-    return render(request, 'film/detail.html', {'posts': posts, 'film': film, 'jadwal': jadwal, 'form': form})
-"""
 
 """view untuk halaman history tiket"""
-
 # list order
 
 
-@login_required()
-def history_tiket(request,):
-    return render(request, 'film/history.html')
+def list_order(request):
+    orders = Order.objects.filter(user=request.user,)
+    return render(request, 'film/daftar_order.html', {'orders': orders, })
 
-# edit order
+
+"""edit order"""
 
 
 def edit_order(request, id):
@@ -144,16 +106,16 @@ def edit_order(request, id):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
-            return redirect('order_detail', id=order.id)
+            return redirect('list_order')
     else:
         form = OrderForm(instance=order)
+    return redirect('list_order')
 
-    return render(request, 'film/history.html', {'form': form})
 
-# delete order
+"""delete order"""
 
 
 def delete_order(request, id):
     order = get_object_or_404(Order, id=id)
     order.delete()
-    return redirect('history_tiket')
+    return redirect('list_order')
