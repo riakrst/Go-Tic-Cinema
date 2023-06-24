@@ -13,16 +13,6 @@ from .models import Film, Jadwal, Order, Tiket
 def home(request):
     user = request.user
     posts = Film.objects.all()
-    # pagination
-    # paginator = Paginator(posts, 6)
-    # page = request.GET.get('page')
-    # try:
-    #     posts = paginator.page(page)
-    # except PageNotAnInteger:
-    #     posts = paginator.page(1)
-    # except EmptyPage:
-    #     post = paginator.page(paginator.num_pages)
-
     return render(request, 'film/home.html', {'user': user, 'posts': posts, })
 
 
@@ -62,7 +52,6 @@ def user_logout(request):
     return redirect('login')
 
 # view halaman detail dan pesan tiket
-
 
 @login_required
 def detail_film(request, id):

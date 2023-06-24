@@ -94,7 +94,7 @@
             {% for film in posts %}
               <div class="col-4 mb-4">
                   <div class="card" style="width: 12rem;">
-                      <img src="media/{{ film.cover }}" class="card-img-top" alt="{{ film.judul }}">
+                      <img src="{% static 'media' %}/{{ film.cover }}" class="card-img-top" alt="{{ film.judul }}">
                       <div class="card-body">
                         <h5 class="card-title judul"><a href="{% url 'detail_film' id=film.id %}">{{ film.judul }}</a></h5>
                       </div>
@@ -102,21 +102,6 @@
               </div>
             {% endfor %}
 
-              <!-- pagination -->
-              <!-- <div class="pagination">
-                  <span class="step-links">
-                      {% if page.has_previous %}
-                      <a href="?page={{page.previous_page_number}}"><i class="bi bi-caret-left"></i></a>
-                      {% endif %}
-              
-                      <span class="current">
-                          {{page.number}}
-                      </span>
-                      {% if page.has_next %}
-                      <a href="?page={{ page.next_page_number}}"><i class="bi bi-caret-right"></i></a>
-                      {% endif %}
-                  </span>
-              </div> -->
           </div>
         </div>
     </div>

@@ -1,9 +1,3 @@
 superuser
 username: superadmin
 pass: super1234
-
-username: riakristi
-pass: ria1234
-
-username: astriwahyuningsiam
-pass: astri1234
